@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Page Name</title>
+
+    <link href="../styles/lib/bootstrap.css" rel="stylesheet" />
+    <link href="../styles/animations.css" rel="stylesheet" />
+    <link href="../styles/loading.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+    <div ng-include="'shell/shell.html'"></div>
+    <div class="modal-loading" ng-show="loadingCount > 0"></div>
+
+    <!-- Libraries -->
+    <script src="../lib/angular.js"></script>
+    <script src="../lib/angular-ui-router.js"></script>
+    <script src="../lib/ui-bootstrap-tpls.js"></script>
+
+    <!-- App Bootstrapping -->
+    <script src="app.js"></script>
+    <script src="app.info.js"></script>
+    <script src="config.js"></script>
+    <script src="config.routes.js"></script>
+
+    <!-- Controllers -->
+    <script src="shell/navigation/NavigationController.js"></script>
+    <script src="home/HomeController.js"></script>
+    <script src="about/AboutController.js"></script>
+
+    <!-- Services -->
+    <script src="common/utils.js"></script>
+</body>
+</html>
