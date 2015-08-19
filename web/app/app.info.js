@@ -1,8 +1,8 @@
 ﻿(function () {
 
     var appInfo = {
-        applicationName: 'Barebones Angular SPA',
-        companyName: 'Tom Charles'
+        applicationName: 'Pillar Academy Workout Tracker',
+        companyName: 'The Pillar Academy Crew'
     };
 
     angular
