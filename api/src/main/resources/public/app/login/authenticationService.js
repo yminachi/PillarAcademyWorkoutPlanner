@@ -10,7 +10,7 @@
 		}
 
 		function login(username) {
-			return $http.post('/login', username).then(function(result) {
+			return $http.post('/login', {username: username}).then(function(result) {
 				if (result.status === 200) 
 					localStorage.setItem('username', username);
 
