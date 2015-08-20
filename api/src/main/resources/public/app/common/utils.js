@@ -4,9 +4,9 @@
         .module('app')
         .factory('utils', utils);
 
-    utils.$inject = ['$rootScope'];
+    utils.$inject = ['$rootScope', '$state'];
 
-    function utils($rootScope) {
+    function utils($rootScope, $state) {
         $rootScope.loadingCount = 0;
 
         var showLoading = function () {
@@ -19,9 +19,14 @@
             }
         };
 
+        var goHome = function() {
+            $state.go('/');
+        }
+
         return {
             showLoading: showLoading,
-            hideLoading: hideLoading
+            hideLoading: hideLoading,
+            goHome: goHome
         };
     }
 
