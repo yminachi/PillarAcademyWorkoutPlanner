@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.url">jdbc:sqlserver://ck6hvctozh.database.windows.net;databaseName=pillarworkout;</property>
+        <property name="hibernate.connection.username">pillarweb</property>
+        <property name="hibernate.connection.password">PillarAcademy!</property>
+
+        <mapping resource="Users.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
