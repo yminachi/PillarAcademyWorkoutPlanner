@@ -1,1 +1,7 @@
 language: java
+before_script:
+  - npm install karma
+  - npm install karma-jasmine --save-dev
+  - npm install karma-phantomjs-launcher --save-dev
+script:
+  - karma start --single-run --browsers PhantomJS api/src/main/resources/public/karma.config.js
