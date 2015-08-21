@@ -1,39 +1,44 @@
 package com.pillartechnology.academy.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
-import com.pillartechnology.academy.*;
+import com.pillartechnology.academy.User;
 
 public class UserRepository {
-	
-	public ArrayList<User> getListOfUsers(){
+
+	public ArrayList<User> getListOfUsers() {
 
 		SessionFactory factory = BaseRepository.getSessionFactory();
 		Session session = factory.openSession();
 		ArrayList<User> users = new ArrayList<User>();
 		Transaction tx = null;
-		
-		try{
+
+		try {
 			tx = session.beginTransaction();
-			users = (ArrayList<User>) session.createQuery("FROM User").list();
+			Query query = session.createQuery("from User");
+
+			users = (ArrayList<User>) query.list();
+
 			tx.commit();
-		} catch(HibernateException e){
-			if (tx != null) tx.rollback();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		
+
+		// User user = new User();
+		// user.setId(1);
+		// user.setUsername("tomcharles");
+		//
+		// users.add(user);
 		return users;
 	}
 }

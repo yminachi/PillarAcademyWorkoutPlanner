@@ -1,3 +1,47 @@
 ﻿<div ng-controller="HomeController as vm">
-    <h1>{{vm.pageTitle}}</h1>
+	<div class="row">
+		<div class="alert alert-danger" role="alert" ng-show="vm.errors.length > 0">
+			<ul>
+				<li ng-repeat="error in vm.errors">{{error}}<li>
+			</ul>
+		</div>
+	</div>
+
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="title">Workout Title</label>
+			<input type="text" class="form-control" id="title" ng-model="vm.newWorkout.name" />
+		</div>
+		<div class="form-group">
+		<label for="title">Time (minutes)</label>
+			<input type="text" class="form-control" id="title" ng-model="vm.newWorkout.time" />
+		</div>
+		<div class="form-group">
+			<label for="title">Distance (miles)</label>
+			<input type="text" class="form-control" id="title" ng-model="vm.newWorkout.distance" />
+		</div>
+		<button class="btn btn-default" ng-click="vm.addWorkout(vm.newWorkout)">Add Workout</button>
+	</form>
+
+	<hr />
+
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Time</th>
+			<th>Distance</th>
+		</tr>
+		<tr ng-repeat="workout in vm.workouts">
+			<td>
+				{{workout.name}}
+			</td>
+			<td>
+				{{workout.time}}
+			</td>
+			<td>
+				{{workout.distance}}
+				<span class="pull-right glyphicon glyphicon-remove" ng-click="vm.deleteWorkout(workout)"></span>
+			</td>
+		</tr>
+	</table>
 </div>
