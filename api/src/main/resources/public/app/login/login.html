@@ -1,5 +1,9 @@
 <div ng-controller="LoginController as vm">
 	<div class="row">
+		<div class="alert alert-danger" role="alert" ng-show="vm.errorMessage.length">{{vm.errorMessage}}</div>
+	</div>
+	<div class="row">
+
 		<div class="col-sm-7">
 			<h3>Login</h3>
 			<form>
@@ -10,6 +14,7 @@
 			  <button type="submit" class="btn btn-primary" ng-click="vm.login(vm.returningUser)">Login</button>
 			</form>
 		</div>
+
 		<div class="col-sm-5">
 			<h3>Not a user? Register now!</h3>
 			<form>

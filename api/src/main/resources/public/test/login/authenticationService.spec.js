@@ -6,7 +6,7 @@ describe("authenticationService", function () {
   beforeEach(module("app"));
 
   beforeEach(inject(function (_authenticationService_) {
-  	localStorage.clear();
+  	sessionStorage.clear();
     authenticationService = _authenticationService_;
   }));
 
@@ -16,7 +16,7 @@ describe("authenticationService", function () {
   	});
 
     it('should return false after logout', function() {
-      localStorage.setItem('username', 'tom');
+      sessionStorage.setItem('username', 'tom');
 
       expect(authenticationService.isLoggedIn()).toBe(true);
 

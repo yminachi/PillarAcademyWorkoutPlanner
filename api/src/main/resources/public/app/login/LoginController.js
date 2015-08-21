@@ -3,20 +3,39 @@
 		.module('app')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['authenticationService'];
+	LoginController.$inject = ['authenticationService', 'utils'];
 
-	function LoginController(authenticationService) {
+	function LoginController(authenticationService, utils) {
 		var vm = this;
 
 		vm.register = function(username) {
+			clearError();
 			authenticationService
 				.register(username)
 				.then(function(result) {
-					if (result) 
+					if (result) {
 						utils.goHome();
+					} else {
+						vm.errorMessage = "Registration Unsuccessful";
+					}
 				});
 		}
-		vm.register = authenticationService.register;
-		vm.login = authenticationService.login;
+
+		vm.login = function(username) {
+			clearError();
+			authenticationService
+				.login(username)
+				.then(function(success) {
+					if (success) {
+						utils.goHome();
+					} else {
+						vm.errorMessage = "Invalid username"
+					}
+				});
+		}
+
+		function clearError() {
+			vm.errorMessage = undefined;
+		}
 	}
 })();
