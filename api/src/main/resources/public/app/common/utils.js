@@ -20,7 +20,7 @@
         };
 
         var goHome = function() {
-            $state.go('/');
+            $state.go('home');
         }
 
         return {

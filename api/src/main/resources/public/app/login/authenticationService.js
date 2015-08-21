@@ -6,28 +6,40 @@
 	function authenticationService($http) {
 
 		function register(username) {
-			return $http.post('/register', username);
+			return $http
+				.post('/register', {username: username})
+				.then(function(result){
+					if (result.status == 200) {
+						return login(username);
+					}
+					return false;
+				}, function() {
+					return false;
+				});
 		}
 
 		function login(username) {
-			return $http.post('/login', {username: username}).then(function(result) {
-				if (result.status === 200) 
-					localStorage.setItem('username', username);
-
-				return true;
-			}, function() {
-				return false;
-			});
+			return $http
+				.post('/login', {username: username})
+				.then(function(result) {
+					if (result.status === 200) {
+						sessionStorage.setItem('username', username);
+						return true;
+					}
+					return false;
+				}, function() {
+					return false;
+				});
 		}
 
 		function isLoggedIn() {
-			var username = localStorage.getItem('username');
+			var username = sessionStorage.getItem('username');
 
 			return username ? true : false;// ? true : false;
 		}
 
 		function logout() {
-			localStorage.removeItem('username');
+			sessionStorage.removeItem('username');
 		}
 
 		return {

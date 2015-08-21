@@ -7,7 +7,7 @@ import com.pillartechnology.academy.exceptions.UserNotFoundException;
 public class AuthenticationLogic {
 
 	public boolean login(String username) throws UserNotFoundException {
-		if (username.equals("tom"))
+		if (username.equals("Dicko"))
 			return true;
 
 		throw new UserNotFoundException();
