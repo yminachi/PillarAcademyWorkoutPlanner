@@ -12,7 +12,7 @@ public abstract class BaseRepository {
 	private static ServiceRegistry serviceRegistry;
 	
 	public static SessionFactory getSessionFactory(){
-		if (sessionFactory == null){
+		if (sessionFactory == null || sessionFactory.isClosed()){
 			Configuration configuration = new Configuration();
 		    configuration.configure();
 		    serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
@@ -22,4 +22,7 @@ public abstract class BaseRepository {
 	    return sessionFactory;
 	}
 	
+	public static void closeSessionFactory(){
+		sessionFactory.close();
+	}
 }
